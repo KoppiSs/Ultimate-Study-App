@@ -1,0 +1,1591 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+/* ==============================================================================
+   Ultimate Study Application - Modern Academic Design System
+   assets/styles.css
+   Compatible with Streamlit Dark Mode & Light Mode
+   ============================================================================== */
+
+/* ------------------------------------------------------------------------------
+   MATERIAL ICONS & SYMBOLS BASE STYLES
+   ------------------------------------------------------------------------------ */
+.material-symbols-rounded,
+.material-icon {
+    font-family: 'Material Symbols Rounded' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 20;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: -0.15em;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ------------------------------------------------------------------------------
+   1. STREAMLIT TOP PADDING & BRANDING REMOVAL
+   ------------------------------------------------------------------------------ */
+
+/* Remove excess top padding and expand container width cleanly */
+.block-container,
+[data-testid="stAppViewContainer"] > .main .block-container,
+.main .block-container {
+    padding-top: 1rem !important;
+    padding-bottom: 2.5rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    max-width: 1600px !important;
+}
+
+/* Streamlit Header & Toolbar adjustment */
+header[data-testid="stHeader"] {
+    background: transparent !important;
+    height: 2rem !important;
+}
+
+[data-testid="stAppDeployButton"] {
+    display: none;
+}
+
+[data-testid="stToolbar"] {
+    right: 1.5rem !important;
+}
+
+/* Hide default Streamlit branding, menu, and status decorations */
+#MainMenu {
+    visibility: hidden !important;
+}
+
+footer {
+    visibility: hidden !important;
+}
+
+[data-testid="stDecoration"] {
+    display: none !important;
+}
+
+[data-testid="stStatusWidget"] {
+    display: none !important;
+}
+
+/* ------------------------------------------------------------------------------
+   SPINNER & CHAT GENERATION STATUS STYLES
+   ------------------------------------------------------------------------------ */
+
+/* Ensure the spinner container and its text remain fully visible across the app */
+.stSpinner,
+[data-testid="stSpinner"],
+div.stSpinner {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    width: auto !important;
+    align-items: center !important;
+    margin: 6px 0 !important;
+}
+
+.stSpinner > div,
+[data-testid="stSpinner"] > div {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+/* Ensure text container and text elements inside spinner are fully visible and readable */
+.stSpinner [role="status"],
+.stSpinner [role="status"] *,
+.stSpinner [data-testid="stMarkdownContainer"],
+.stSpinner [data-testid="stMarkdownContainer"] *,
+.stSpinner p,
+[data-testid="stSpinner"] [role="status"],
+[data-testid="stSpinner"] [role="status"] *,
+[data-testid="stSpinner"] [data-testid="stMarkdownContainer"],
+[data-testid="stSpinner"] [data-testid="stMarkdownContainer"] *,
+[data-testid="stSpinner"] p {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 0.88rem !important;
+    color: var(--text-color, #e0e0e0) !important;
+}
+
+/* ------------------------------------------------------------------------------
+   AI TUTOR CHAT: VERTICAL CENTERING & CLEAN TEXT DISPLAY
+   ------------------------------------------------------------------------------ */
+
+/* Vertically center the AI Tutor stage-of-generation status text with the assistant avatar */
+[data-testid="stChatMessage"]:has(.stSpinner),
+[data-testid="stChatMessage"]:has([data-testid="stSpinner"]) {
+    align-items: center !important;
+}
+
+[data-testid="stChatMessage"] [data-testid="stChatMessageContent"] {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+[data-testid="stChatMessage"] .stSpinner,
+[data-testid="stChatMessage"] [data-testid="stSpinner"],
+[data-testid="stChatMessage"] div.stSpinner {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 2rem !important; /* matches Streamlit 32px avatar height */
+}
+
+[data-testid="stChatMessage"] .stSpinner > div,
+[data-testid="stChatMessage"] [data-testid="stSpinner"] > div {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+[data-testid="stChatMessage"] .stSpinner [role="status"],
+[data-testid="stChatMessage"] .stSpinner [data-testid="stMarkdownContainer"],
+[data-testid="stChatMessage"] .stSpinner [data-testid="stMarkdownContainer"] p,
+[data-testid="stChatMessage"] .stSpinner p {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+    font-size: 0.88rem !important;
+}
+
+/* Collapse any placeholder column layout or iframe in AI Tutor chat */
+[data-testid="stChatMessage"] [data-testid="stHorizontalBlock"],
+[data-testid="stChatMessage"] [data-testid="stColumn"],
+[data-testid="stChatMessage"] [data-testid="stCustomComponentV1"],
+[data-testid="stChatMessage"] iframe {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide graphical spinner icon ONLY inside AI Tutor chat */
+[data-testid="stChatMessage"] [data-testid="stSpinnerIcon"],
+[data-testid="stChatMessage"] .stSpinner [data-testid="stSpinnerIcon"],
+[data-testid="stChatMessage"] .stSpinner svg,
+[data-testid="stChatMessage"] .stSpinner i,
+[data-testid="stChatMessage"] .stSpinner [class*="e1ocqwht"],
+[data-testid="stChatMessage"] .stSpinner [class*="1ocqwht"],
+[data-testid="stChatMessage"] .stSpinner span[aria-hidden="true"],
+[data-testid="stChatMessage"] .stSpinner > div > span:first-child {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* ------------------------------------------------------------------------------
+   DUAL-SOURCE SEARCH & NOTES EVALUATOR: NATIVE SPINNER ICON & TEXT ONLY
+   ------------------------------------------------------------------------------ */
+
+/* Keep the loading spinner animation and status text active and cleanly visible */
+[data-testid="stTabPanel"] .stSpinner,
+[data-testid="stTabPanel"] [data-testid="stSpinner"] {
+    display: flex !important;
+    align-items: center !important;
+    margin: 8px 0 !important;
+}
+
+[data-testid="stTabPanel"] [data-testid="stSpinnerIcon"],
+[data-testid="stTabPanel"] .stSpinner [data-testid="stSpinnerIcon"],
+[data-testid="stTabPanel"] .stSpinner [class*="e1ocqwht"],
+[data-testid="stTabPanel"] .stSpinner [class*="1ocqwht"],
+[data-testid="stTabPanel"] .stSpinner svg,
+[data-testid="stTabPanel"] .stSpinner i,
+[data-testid="stTabPanel"] .stSpinner span[aria-hidden="true"] {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Remove the large green loading animation (Lottie iframe / custom component) from tab panels */
+[data-testid="stTabPanel"] [data-testid="stCustomComponentV1"],
+[data-testid="stTabPanel"] iframe,
+[data-testid="stTabPanel"] iframe[title*="lottie"],
+[data-testid="stTabPanel"] iframe[title*="streamlit_lottie"],
+[data-testid="stTabPanel"] [data-testid="stHorizontalBlock"]:has([data-testid="stCustomComponentV1"]) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ------------------------------------------------------------------------------
+   2. GLOBAL SIDEBAR STYLES
+   ------------------------------------------------------------------------------ */
+[data-testid="stSidebar"],
+section[data-testid="stSidebar"],
+.stSidebar,
+[data-testid="stSidebarUserContent"],
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+    background-color: #1e1e24 !important;
+    text-align: left !important;
+}
+
+[data-testid="stSidebar"] iframe {
+    background-color: #1e1e24 !important;
+    border: none !important;
+}
+
+[data-testid="stSidebar"] div[data-testid="stCustomComponentV1"] {
+    background-color: #1e1e24 !important;
+    border: none !important;
+}
+
+[data-testid="stSidebar"] .block-container,
+section[data-testid="stSidebar"] .block-container,
+.stSidebar .block-container {
+    padding-top: 1rem !important;
+    padding-bottom: 2rem !important;
+    text-align: left !important;
+}
+
+/* Sidebar Brand Header */
+.sidebar-brand-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 0 12px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    margin-bottom: 12px;
+    text-align: left !important;
+    justify-content: flex-start !important;
+}
+
+.brand-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+}
+
+.brand-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--text-color, inherit);
+    text-align: left !important;
+}
+
+/* Sidebar Section Headers */
+.sidebar-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    padding: 0 2px;
+    text-align: left !important;
+}
+
+.section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(156, 163, 175, 0.95);
+    text-align: left !important;
+}
+
+.section-chip {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: rgba(128, 128, 128, 0.14);
+    color: rgba(156, 163, 175, 0.95);
+}
+
+/* Sidebar Context Cards */
+.sidebar-context-card {
+    background: rgba(128, 128, 128, 0.07);
+    border: 1px solid rgba(128, 128, 128, 0.16);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    text-align: left !important;
+    backdrop-filter: blur(6px);
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.sidebar-context-card:hover {
+    border-color: rgba(99, 102, 241, 0.35);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+/* Sidebar Footer / System Status */
+.sidebar-footer {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(128, 128, 128, 0.18);
+    font-size: 0.72rem;
+    text-align: left !important;
+}
+
+.footer-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.28);
+    border-radius: 6px;
+    font-weight: 600;
+    color: #10b981;
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-align: left !important;
+}
+
+.footer-detail {
+    color: rgba(156, 163, 175, 0.85);
+    line-height: 1.4;
+    font-size: 12px;
+    text-align: left !important;
+}
+
+/* AI Model Status Indicators */
+.model-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 0;
+    font-size: 0.75rem;
+}
+
+.model-name-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--text-color, inherit);
+}
+
+.model-role-badge {
+    font-size: 0.67rem;
+    color: rgba(156, 163, 175, 0.9);
+    background: rgba(128, 128, 128, 0.12);
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+.dot-green {
+    color: #10b981;
+    font-size: 0.65rem;
+}
+
+.dot-purple {
+    color: #a855f7;
+    font-size: 0.65rem;
+}
+
+.dot-blue {
+    color: #3b82f6;
+    font-size: 0.65rem;
+}
+
+/* ------------------------------------------------------------------------------
+   3. MODERN CARD CONTAINERS & HERO PANELS
+   ------------------------------------------------------------------------------ */
+
+/* Hero Header Card */
+.minimal-hero-card {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.minimal-hero-card .minimal-hero-title {
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px;
+    color: var(--text-color, inherit);
+}
+
+.minimal-hero-sub {
+    margin: 4px 0 0;
+    max-width: 62ch;
+    color: rgba(156, 163, 175, 0.9);
+    font-size: 14px;
+}
+
+/* Minimalist Dashboard Metric Strip */
+.dash-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.dash-metric-card {
+    background: rgba(128, 128, 128, 0.05);
+    border: 1px solid rgba(128, 128, 128, 0.16);
+    border-radius: 12px;
+    padding: 16px;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+
+}
+
+.dash-metric-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.dash-metric-val {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-color, inherit);
+    line-height: 32px;
+    font-variant-numeric: tabular-nums;
+}
+
+.dash-metric-lbl {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(156, 163, 175, 0.9);
+    line-height: 20px;
+}
+
+.dash-metric-sub {
+    font-size: 14px;
+    color: rgba(156, 163, 175, 0.75);
+    margin-top: 4px;
+    line-height: 16px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Unified Dashboard & Bordered Container Cards */
+[data-testid="stVerticalBlockBorderWrapper"],
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: rgba(128, 128, 128, 0.04) !important;
+    border: 1px solid rgba(128, 128, 128, 0.16) !important;
+    border-radius: 12px !important;
+    margin-bottom: 16px !important;
+    backdrop-filter: blur(6px);
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"]:hover,
+div[data-testid="stVerticalBlockBorderWrapper"]:hover {
+    border-color: rgba(99, 102, 241, 0.35) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] > div {
+    padding: 16px 18px !important;
+    gap: 10px !important;
+    overflow-x: hidden !important;
+}
+
+/* Ensure nested scrollable containers (e.g., Agenda & Recent Notes) disable horizontal scrolling and nested borders */
+[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stVerticalBlockBorderWrapper"] {
+    background: transparent !important;
+    border: none !important;
+    margin-bottom: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stVerticalBlockBorderWrapper"]:hover {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stVerticalBlockBorderWrapper"] > div {
+    padding: 2px 4px 2px 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+/* Strictly enforce vertical-only scrolling across note lists */
+div[data-testid="stVerticalBlockBorderWrapper"]:has(.dash-quick-row) > div,
+div[data-testid="stVerticalBlock"]:has(> div > .dash-quick-row) {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+/* ------------------------------------------------------------------------------
+   GLOBAL ALTAIR / VEGA-LITE ACTION MENU REMOVAL
+   Hides the default 4-button action menus, toolbars, and details/summary toggles globally.
+   ------------------------------------------------------------------------------ */
+[data-testid="stVegaLiteChart"] summary,
+[data-testid="stVegaLiteChart"] details,
+[data-testid="stVegaLiteChart"] [data-testid="stElementToolbar"],
+[data-testid="stVegaLiteChart"] .vega-actions,
+details.vega-actions,
+.vega-actions,
+div[data-testid="stVegaLiteChart"] button[title="View source"],
+div[data-testid="stVegaLiteChart"] button[title="Open in Vega Editor"],
+[data-testid="stElementContainer"]:has([data-testid="stVegaLiteChart"]) [data-testid="stElementToolbar"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Borderless small KPI modal trigger button */
+div[class*="st-key-kpi_expand_"] {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: auto !important;
+}
+
+div[class*="st-key-kpi_expand_"] button {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    min-height: unset !important;
+    height: 24px !important;
+    width: 24px !important;
+    color: rgba(156, 163, 175, 0.6) !important;
+    box-shadow: none !important;
+    border-radius: 6px !important;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+div[class*="st-key-kpi_expand_"] button:hover {
+    color: #818cf8 !important;
+    background: rgba(129, 140, 248, 0.12) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+div[class*="st-key-kpi_expand_"] button [data-testid="stMarkdownContainer"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+div[class*="st-key-kpi_expand_"] button:active,
+div[class*="st-key-kpi_expand_"] button:focus {
+    color: #818cf8 !important;
+    background: rgba(129, 140, 248, 0.18) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Unified Card Header inside containers */
+.dash-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.10);
+}
+
+[data-testid="stMarkdownContainer"] .dash-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    line-height: 24px;
+    color: var(--text-color, inherit);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dash-card-title .material-symbols-rounded {
+    font-size: 18px;
+    color: #818cf8;
+}
+
+.minimal-hero-title .material-symbols-rounded {
+    font-size: 24px;
+    color: #818cf8;
+    vertical-align: -0.15em;
+    margin-right: 8px;
+}
+
+/* Dashboard Summary Cards */
+.dash-summary-card {
+    background: rgba(128, 128, 128, 0.04);
+    border: 1px solid rgba(128, 128, 128, 0.16);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(6px);
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.dash-summary-card:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.dash-quick-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(128, 128, 128, 0.03);
+    border: 1px solid rgba(128, 128, 128, 0.08);
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.dash-quick-row:hover {
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.28);
+}
+
+.dash-quick-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Hollow Metadata Tags (Inline Markdown Note Badges in Dashboard rows) */
+.dash-quick-row [class*="badge-"] {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.dash-quick-row .badge-diff-1,
+.dash-quick-row .badge-diff-2 {
+    color: #10b981 !important;
+    border: 1px solid rgba(16, 185, 129, 0.45) !important;
+    background: transparent !important;
+}
+
+.dash-quick-row .badge-diff-3 {
+    color: #f59e0b !important;
+    border: 1px solid rgba(245, 158, 11, 0.45) !important;
+    background: transparent !important;
+}
+
+.dash-quick-row .badge-diff-4,
+.dash-quick-row .badge-diff-5 {
+    color: #ef4444 !important;
+    border: 1px solid rgba(239, 68, 68, 0.45) !important;
+    background: transparent !important;
+}
+
+.dash-quick-row .badge-exam {
+    color: #3b82f6 !important;
+    border: 1px solid rgba(59, 130, 246, 0.45) !important;
+    background: transparent !important;
+}
+
+.dash-quick-row .badge-tag {
+    color: #a78bfa !important;
+    border: 1px solid rgba(139, 92, 246, 0.4) !important;
+    background: transparent !important;
+}
+
+/* Solid Header Badges in Container Headers (Strictly Excluded - Solid Backgrounds) */
+.dash-card-header .badge-diff-1,
+.dash-card-header .badge-diff-2,
+.minimal-hero-card .badge-diff-1 {
+    background: rgba(16, 185, 129, 0.16) !important;
+    color: #10b981 !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.dash-card-header .badge-diff-3 {
+    background: rgba(245, 158, 11, 0.16) !important;
+    color: #f59e0b !important;
+    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+}
+
+.dash-card-header .badge-diff-4,
+.dash-card-header .badge-diff-5 {
+    background: rgba(239, 68, 68, 0.16) !important;
+    color: #ef4444 !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+.dash-card-header .badge-exam,
+.minimal-hero-card .badge-exam {
+    background: rgba(59, 130, 246, 0.15) !important;
+    color: #3b82f6 !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.dash-card-header .badge-tag {
+    background: rgba(139, 92, 246, 0.14) !important;
+    color: #a78bfa !important;
+    border: 1px solid rgba(139, 92, 246, 0.28) !important;
+}
+
+.system-infra-card {
+    background: rgba(128, 128, 128, 0.04);
+    border: 1px solid rgba(128, 128, 128, 0.16);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 20px;
+    backdrop-filter: blur(6px);
+}
+
+/* ------------------------------------------------------------------------------
+   4. TIMELINE FLOW & STUDY SESSION CARDS
+   ------------------------------------------------------------------------------ */
+
+/* Ratio Progress Bar */
+.timeline-ratio-track {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin: 12px 0 16px 0;
+    background: rgba(128, 128, 128, 0.14);
+}
+
+.ratio-focus-fill {
+    background: linear-gradient(90deg, #6366f1, #818cf8);
+    height: 100%;
+}
+
+.ratio-break-fill {
+    background: linear-gradient(90deg, #10b981, #34d399);
+    height: 100%;
+}
+
+/* Timeline Cards */
+.timeline-flow-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.timeline-card {
+    background: rgba(128, 128, 128, 0.04);
+    border: 1px solid rgba(128, 128, 128, 0.16);
+    border-radius: 12px;
+    padding: 16px;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+    position: relative;
+    backdrop-filter: blur(6px);
+}
+
+.timeline-card-focus {
+    border-left: 5px solid #6366f1 !important;
+    background: linear-gradient(90deg, rgba(99, 102, 241, 0.07) 0%, rgba(128, 128, 128, 0.02) 100%);
+}
+
+.timeline-card-break {
+    border-left: 5px solid #10b981 !important;
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.07) 0%, rgba(128, 128, 128, 0.02) 100%);
+}
+
+.timeline-card-completed {
+    opacity: 0.65;
+    border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+.time-badge {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(128, 128, 128, 0.14);
+    color: var(--text-color, inherit);
+    letter-spacing: 0.02em;
+}
+
+.step-seq-pill {
+    font-size: 0.70rem;
+    font-weight: 600;
+    color: rgba(156, 163, 175, 0.95);
+}
+
+.badge-focus {
+    background: #6366f1;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.80rem;
+    font-weight: 600;
+}
+
+.badge-break {
+    background: #10b981;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.80rem;
+    font-weight: 600;
+}
+
+.badge-complete {
+    background: rgba(16, 185, 129, 0.18);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+/* ------------------------------------------------------------------------------
+   5. KNOWLEDGE SEARCH & COVERAGE EVALUATION CARDS
+   ------------------------------------------------------------------------------ */
+
+.search-card-notes {
+    background: rgba(128, 128, 128, 0.05);
+    border: 1px solid rgba(128, 128, 128, 0.16);
+    border-left: 4px solid #6366f1;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    backdrop-filter: blur(6px);
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.search-card-wiki {
+    background: rgba(128, 128, 128, 0.05);
+    border: 1px solid rgba(128, 128, 128, 0.16);
+    border-left: 4px solid #10b981;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    backdrop-filter: blur(6px);
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.coverage-card-pass {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.28);
+    border-left: 5px solid #10b981;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 16px;
+    backdrop-filter: blur(6px);
+}
+
+.coverage-card-gap {
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    border-left: 5px solid #f59e0b;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 16px;
+    backdrop-filter: blur(6px);
+}
+
+.prompt-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    background: rgba(128, 128, 128, 0.08);
+    border: 1px solid rgba(128, 128, 128, 0.18);
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+    margin: 4px;
+}
+
+.prompt-chip:hover {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+/* ------------------------------------------------------------------------------
+   6. ACADEMIC NOTES VAULT & AUTHORING STUDIO
+   ------------------------------------------------------------------------------ */
+
+.vault-banner {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.10) 0%, rgba(124, 58, 237, 0.05) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.22);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(6px);
+}
+
+.vault-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.vault-metric-box {
+    background: rgba(128, 128, 128, 0.06);
+    border: 1px solid rgba(128, 128, 128, 0.16);
+    border-radius: 8px;
+    padding: 10px 12px;
+    text-align: center;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.vault-metric-box:hover {
+    border-color: rgba(99, 102, 241, 0.35);
+}
+
+.vault-metric-val {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #818cf8;
+}
+
+.vault-metric-lbl {
+    font-size: 0.70rem;
+    color: rgba(156, 163, 175, 0.9);
+}
+
+.doc-header-card {
+    background: rgba(128, 128, 128, 0.06);
+    border: 1px solid rgba(128, 128, 128, 0.18);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(6px);
+}
+
+.badge-diff-1, .badge-diff-2 {
+    background: rgba(16, 185, 129, 0.16);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+.badge-diff-3 {
+    background: rgba(245, 158, 11, 0.16);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+.badge-diff-4, .badge-diff-5 {
+    background: rgba(239, 68, 68, 0.16);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+.badge-exam {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+.badge-tag {
+    background: rgba(139, 92, 246, 0.14);
+    color: #a78bfa;
+    border: 1px solid rgba(139, 92, 246, 0.28);
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+.badge-latex {
+    background: rgba(168, 85, 247, 0.16);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.32);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ai-grounding-banner {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-left: 4px solid #10b981;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    backdrop-filter: blur(6px);
+}
+
+/* ------------------------------------------------------------------------------
+   7. MINIMALIST DASHBOARD TABS (Pill Styling, No Dotted Outline)
+   ------------------------------------------------------------------------------ */
+div[data-testid="stTabs"] {
+    margin-top: 8px;
+}
+
+div[data-testid="stTabs"] [data-baseweb="tab-list"] {
+    gap: 8px;
+    background-color: rgba(128, 128, 128, 0.06);
+    padding: 4px 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(128, 128, 128, 0.16);
+    margin-bottom: 16px;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"] {
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    color: var(--text-color, inherit) !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"]:hover {
+    background: rgba(99, 102, 241, 0.12) !important;
+    color: #818cf8 !important;
+    border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"]:hover p,
+div[data-testid="stTabs"] button[data-baseweb="tab"]:hover span,
+div[data-testid="stTabs"] button[data-baseweb="tab"]:hover [data-testid="stIconMaterial"] {
+    color: #818cf8 !important;
+}
+
+div[data-testid="stTabs"] button[aria-selected="true"] {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.25) 0%, rgba(124, 58, 237, 0.18) 100%) !important;
+    color: #818cf8 !important;
+    border: 1px solid rgba(99, 102, 241, 0.5) !important;
+    box-shadow: 0 2px 10px rgba(79, 70, 229, 0.2) !important;
+}
+
+div[data-testid="stTabs"] button[aria-selected="true"] p,
+div[data-testid="stTabs"] button[aria-selected="true"] span,
+div[data-testid="stTabs"] button[aria-selected="true"] div,
+div[data-testid="stTabs"] button[aria-selected="true"] svg,
+div[data-testid="stTabs"] button[aria-selected="true"] [data-testid="stIconMaterial"] {
+    color: #818cf8 !important;
+    fill: #818cf8 !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"]:focus,
+div[data-testid="stTabs"] button[data-baseweb="tab"]:focus-visible {
+    outline: none !important;
+    border-color: rgba(99, 102, 241, 0.6) !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25) !important;
+}
+
+div[data-testid="stTabs"] [data-baseweb="tab-border"],
+div[data-testid="stTabs"] [data-baseweb="tab-highlight"] {
+    display: none !important;
+    background-color: #6366f1 !important;
+}
+
+/* Global Selection & Form Accent (Purple Theme) */
+::selection {
+    background: rgba(99, 102, 241, 0.35) !important;
+    color: #ffffff !important;
+}
+::-moz-selection {
+    background: rgba(99, 102, 241, 0.35) !important;
+    color: #ffffff !important;
+}
+
+[data-testid="stCheckbox"] input:checked + div,
+[data-testid="stCheckbox"] div[aria-checked="true"] {
+    background-color: #6366f1 !important;
+    border-color: #6366f1 !important;
+}
+
+/* ------------------------------------------------------------------------------
+   8. STREAMLINED SINGLE NAVIGATION TREE (Obsidian / IDE Style)
+   ------------------------------------------------------------------------------ */
+.vault-tree-container {
+    background: rgba(128, 128, 128, 0.03);
+    border: 1px solid rgba(128, 128, 128, 0.14);
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin-top: 8px;
+    backdrop-filter: blur(6px);
+}
+
+.vault-tree-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 6px 8px 6px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.16);
+    margin-bottom: 6px;
+}
+
+.vault-tree-title {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: rgba(156, 163, 175, 0.95);
+}
+
+.vault-tree-stats {
+    font-size: 0.68rem;
+    color: rgba(156, 163, 175, 0.75);
+}
+
+/* Target navigation buttons strictly inside the tree column and container */
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton,
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stDownloadButton,
+div[data-testid="stColumn"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"],
+div[data-testid="column"]:has(.vault-tree-marker) div.stButton,
+div[data-testid="column"]:has(.vault-tree-marker) div.stDownloadButton,
+div[data-testid="column"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"],
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div.stButton,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div.stDownloadButton,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] {
+    margin-bottom: 2px !important;
+}
+
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button,
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stDownloadButton > button,
+div[data-testid="stColumn"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] button,
+div[data-testid="column"]:has(.vault-tree-marker) div.stButton > button,
+div[data-testid="column"]:has(.vault-tree-marker) div.stDownloadButton > button,
+div[data-testid="column"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] button,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div.stButton > button,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div.stDownloadButton > button,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] button,
+div[data-testid="stVerticalBlock"]:has(.note-viewer-toolbar) div.stDownloadButton > button,
+div[data-testid="stVerticalBlock"]:has(.note-viewer-toolbar) div[data-testid="stDownloadButton"] button,
+div[class*="st-key-btn_download_active"] button {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+    font-size: 0.85rem !important;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out !important;
+    box-shadow: none !important;
+}
+
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button div,
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stDownloadButton > button div,
+div[data-testid="stColumn"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] button div,
+div[data-testid="column"]:has(.vault-tree-marker) div.stButton > button div,
+div[data-testid="column"]:has(.vault-tree-marker) div.stDownloadButton > button div,
+div[data-testid="column"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] button div,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div.stButton > button div,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div.stDownloadButton > button div,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] button div,
+div[data-testid="stVerticalBlock"]:has(.note-viewer-toolbar) div.stDownloadButton > button div,
+div[data-testid="stVerticalBlock"]:has(.note-viewer-toolbar) div[data-testid="stDownloadButton"] button div,
+div[class*="st-key-btn_download_active"] button div {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    text-align: left !important;
+    width: 100% !important;
+}
+
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button p,
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stDownloadButton > button p,
+div[data-testid="stColumn"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] button p,
+div[data-testid="column"]:has(.vault-tree-marker) div.stButton > button p,
+div[data-testid="column"]:has(.vault-tree-marker) div.stDownloadButton > button p,
+div[data-testid="column"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] button p,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div.stButton > button p,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div.stDownloadButton > button p,
+div[data-testid="stVerticalBlock"]:has(.vault-tree-marker) div[data-testid="stDownloadButton"] button p,
+div[data-testid="stVerticalBlock"]:has(.note-viewer-toolbar) div.stDownloadButton > button p,
+div[data-testid="stVerticalBlock"]:has(.note-viewer-toolbar) div[data-testid="stDownloadButton"] button p,
+div[class*="st-key-btn_download_active"] button p {
+    text-align: left !important;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Folder branch headers (tertiary type) */
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button[kind="tertiary"],
+div[data-testid="stColumn"]:has(.vault-tree-marker) button[data-testid="baseButton-tertiary"] {
+    font-weight: 600 !important;
+    color: var(--text-color, inherit) !important;
+    background: rgba(128, 128, 128, 0.05) !important;
+    border: 1px solid rgba(128, 128, 128, 0.14) !important;
+    margin-top: 6px !important;
+    margin-bottom: 2px !important;
+    padding: 7px 11px !important;
+}
+
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button[kind="tertiary"]:hover,
+div[data-testid="stColumn"]:has(.vault-tree-marker) button[data-testid="baseButton-tertiary"]:hover {
+    background: rgba(128, 128, 128, 0.12) !important;
+    border-color: rgba(128, 128, 128, 0.28) !important;
+}
+
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button[kind="tertiary"] p,
+div[data-testid="stColumn"]:has(.vault-tree-marker) button[data-testid="baseButton-tertiary"] p {
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+}
+
+/* Regular Note Leaves (secondary type) */
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button[kind="secondary"],
+div[data-testid="stColumn"]:has(.vault-tree-marker) button[data-testid="baseButton-secondary"] {
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    color: var(--text-color, inherit) !important;
+    padding-left: 16px !important;
+}
+
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button[kind="secondary"]:hover,
+div[data-testid="stColumn"]:has(.vault-tree-marker) button[data-testid="baseButton-secondary"]:hover {
+    background: rgba(128, 128, 128, 0.08) !important;
+    border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Active note selection highlight (primary type) */
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button[kind="primary"],
+div[data-testid="stColumn"]:has(.vault-tree-marker) button[data-testid="baseButton-primary"] {
+    background: linear-gradient(90deg, rgba(99, 102, 241, 0.22) 0%, rgba(139, 92, 246, 0.10) 100%) !important;
+    border: 1px solid rgba(99, 102, 241, 0.5) !important;
+    border-left: 4px solid #6366f1 !important;
+    padding-left: 16px !important;
+}
+
+div[data-testid="stColumn"]:has(.vault-tree-marker) div.stButton > button[kind="primary"] p,
+div[data-testid="stColumn"]:has(.vault-tree-marker) button[data-testid="baseButton-primary"] p {
+    font-weight: 600 !important;
+    color: #818cf8 !important;
+}
+
+/* ------------------------------------------------------------------------------
+   9. RESPONSIVE PAGE AND DASHBOARD LAYOUT
+   ------------------------------------------------------------------------------ */
+
+/* Interface polish follows unslop by Damir Sokolovsky (@heydamir), CC BY 4.0. */
+.page-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+}
+
+.dashboard-heading {
+    margin-bottom: 16px;
+}
+
+.page-heading-row > .badge-exam .material-symbols-rounded,
+.course-meta .material-symbols-rounded {
+    font-size: 16px;
+}
+
+.st-key-dashboard_metrics [data-testid="stHorizontalBlock"] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 148px), 1fr));
+    align-items: stretch;
+}
+
+.st-key-dashboard_metrics [data-testid="stColumn"],
+.st-key-dashboard_summary > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+    width: 100%;
+}
+
+[class*="st-key-dashboard_metric_"] {
+    height: 100%;
+    position: relative;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+[class*="st-key-dashboard_metric_"] .dash-metric-lbl {
+    padding-right: 24px;
+}
+
+.dash-metric-val-text {
+    min-height: 32px;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    overflow-wrap: anywhere;
+}
+
+div[class*="st-key-kpi_expand_"] button:focus-visible {
+    outline: 2px solid #818cf8 !important;
+    outline-offset: 2px;
+}
+
+.st-key-dashboard_course_list,
+.st-key-dashboard_recent_notes,
+.st-key-dashboard_subject_list {
+    max-height: 344px;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+}
+
+.course-row {
+    display: grid;
+    gap: 8px;
+}
+
+.course-title {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    overflow-wrap: anywhere;
+}
+
+.course-code {
+    color: #818cf8;
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    overflow-wrap: anywhere;
+}
+
+.course-meta,
+.dash-list-meta {
+    color: rgba(156, 163, 175, 0.9);
+    font-size: 12px;
+    line-height: 16px;
+    font-variant-numeric: tabular-nums;
+}
+
+.dash-subject-row {
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.10);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.dash-subject-row .material-symbols-rounded {
+    color: #818cf8;
+    font-size: 16px;
+}
+
+.dash-subject-name {
+    overflow-wrap: anywhere;
+}
+
+.dash-subject-name strong {
+    font-weight: 600;
+}
+
+@media (max-width: 960px) {
+    .st-key-dashboard_summary > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .block-container {
+        padding-right: 16px !important;
+        padding-left: 16px !important;
+    }
+
+    .minimal-hero-card {
+        padding: 16px;
+    }
+
+    .minimal-hero-card .minimal-hero-title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .st-key-dashboard_metrics [data-testid="stColumn"]:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ------------------------------------------------------------------------------
+   10. STUDY CALENDAR VIEW STYLES
+   ------------------------------------------------------------------------------ */
+.calendar-view-container {
+    background: rgba(30, 41, 59, 0.35);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.calendar-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.calendar-nav-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-color, #e2e8f0);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calendar-grid-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.calendar-weekday-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #818cf8;
+    padding: 6px 0;
+}
+
+.calendar-grid-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-day-box {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 10px;
+    min-height: 80px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.calendar-day-box:hover {
+    border-color: rgba(99, 102, 241, 0.45);
+    background: rgba(30, 41, 59, 0.65);
+}
+
+.calendar-day-box.is-today {
+    border: 1.5px solid #6366f1;
+    background: rgba(99, 102, 241, 0.08);
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.2);
+}
+
+.calendar-day-box.is-selected {
+    border: 1.5px solid #a855f7;
+    background: rgba(168, 85, 247, 0.1);
+}
+
+.calendar-day-box.is-empty {
+    opacity: 0.22;
+    background: transparent;
+    border-color: transparent;
+    pointer-events: none;
+}
+
+.calendar-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.calendar-day-number {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text-color, #cbd5e1);
+}
+
+.calendar-day-box.is-today .calendar-day-number {
+    color: #818cf8;
+    font-weight: 600;
+}
+
+.calendar-chip {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    line-height: 1.3;
+}
+
+.calendar-chip-active {
+    background: rgba(99, 102, 241, 0.25);
+    color: #c7d2fe;
+    border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.calendar-chip-upcoming {
+    background: rgba(16, 185, 129, 0.2);
+    color: #6ee7b7;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.calendar-chip-past {
+    background: rgba(148, 163, 184, 0.15);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+

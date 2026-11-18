@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "wikipedia_search": {
+      "command": "python",
+      "args": ["${workspaceFolder}/src/wiki_server.py", "--mcp"]
+    }
+  }
+}

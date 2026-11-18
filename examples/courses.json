@@ -1,0 +1,10 @@
+[
+  {
+    "course_id": "DEMO-101",
+    "name": "Practice Methods (Example)",
+    "linked_subject": "Practice Methods",
+    "instructors": [{"name": "Alex Example", "email": "alex@example.com"}],
+    "tas": [],
+    "schedule": [{"day": "Wednesday", "start_time": "14:00", "end_time": "15:00", "location": "Demo Room"}]
+  }
+]

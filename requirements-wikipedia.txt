@@ -1,0 +1,3 @@
+-r requirements.txt
+fastmcp==4.0.11
+libzim==3.13.1
