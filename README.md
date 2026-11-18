@@ -1,10 +1,44 @@
-# Ultimate Study Application
+# Ultimate Study App
 
-A local, single-user Streamlit app for course planning, timed study sessions, Markdown notes, and tutoring with Ollama. The planner and notes work without Ollama or Wikipedia.
+Ultimate Study App is a local study workspace that connects course planning, timed focus sessions, and Markdown notes. Plan a study block, link the material you want to review, and track your progress from one dashboard. An optional Ollama tutor can use your notes to answer questions and help draft or revise study material.
+
+The planner and Notes Vault work without Ollama or a Wikipedia archive. First launch with default storage creates a fictional course, study session, and note to try.
+
+![Study dashboard showing a fictional course, weekly activity, and recent notes](docs/screenshots/dashboard.png)
+
+## What it does
+
+- **Dashboard and courses**. Review active courses, study activity, and recent notes. Manage course details and schedules in the course roster.
+- **Study Cockpit**. Plan focus and break intervals, link notes to study sessions, and review scheduled sessions in an agenda or calendar.
+- **Notes Vault**. Browse notes by subject, search by title or tag, edit Markdown, and preview formatted text and LaTeX.
+- **Local AI tutor and note authoring**. Choose an installed Ollama model for chat and writing assistance. Enable excerpts from your notes and offline Wikipedia as optional context.
+
+<details>
+<summary>See the Study Cockpit and Notes Vault</summary>
+
+![Study Cockpit showing the example session in Upcoming Study Blocks](docs/screenshots/study-cockpit.png)
+
+![Notes Vault displaying the fictional Retrieval Practice note and its subject folder](docs/screenshots/notes-vault.png)
+
+</details>
+
+## Tech stack
+
+| Area | Technology and role |
+| --- | --- |
+| Application | Python and Streamlit, with custom CSS and `streamlit-option-menu` for navigation |
+| Scheduling | Python scheduling logic for focus intervals, breaks, and saved study sessions |
+| Data visualization | pandas and Altair for study activity and note distribution charts |
+| Local storage | Markdown with YAML front matter for notes, JSON for courses, sessions, and settings, and SQLite for legacy workflows |
+| Optional AI | Ollama HTTP API for tutoring and note authoring with one configurable local model |
+| Optional Wikipedia | `libzim` for reading local ZIM archives and FastMCP for the optional MCP server |
+| Tests | pytest for scheduling, notes, settings, and workflows |
 
 ## Run locally
 
-The setup below uses Python 3.14. From the project directory on Windows PowerShell:
+Install Python 3.14 and clone or download this repository. Run the following commands from the project directory.
+
+**Windows PowerShell**
 
 ```powershell
 py -3.14 -m venv .venv
@@ -12,9 +46,15 @@ py -3.14 -m venv .venv
 .\.venv\Scripts\python.exe -m streamlit run src/app.py
 ```
 
-On macOS or Linux, use `python3.14 -m venv .venv` and `.venv/bin/python` for the last two commands. The default Streamlit configuration binds to the loopback interface. The app uses Google Fonts for some browser icons.
+**macOS and Linux**
 
-The first launch with fresh default storage creates a fictional course, a Markdown note, and a sample study session for the next day. See `examples/` for the starter course and note. All edits are stored locally under `data/` by default.
+```bash
+python3.14 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m streamlit run src/app.py
+```
+
+Open `http://127.0.0.1:8501` in your browser. In **Study Cockpit → Daily Agenda & History**, look under **Upcoming Study Blocks** for the example session scheduled for the next day. Open **Notes Vault** to explore the example note. The default server binds to the loopback interface. Some icons load from Google Fonts.
 
 ## Use your own study data
 
@@ -49,11 +89,6 @@ python -m pytest -q
 
 The direct Wikipedia integration test needs an English Wikipedia ZIM and `requirements-wikipedia.txt`. The legacy Kiwix HTTP scraper test runs when `RUN_KIWIX_TESTS=1` and a server is available. Set `KIWIX_SERVER` and `KIWIX_ARCHIVE_ID` for a custom server or archive. The core test suite does not need a ZIM or Kiwix server.
 
-## Preparing a public repository
-
-Keep runtime storage, local credentials, and personal exports out of Git. If you use a custom workspace inside the checkout, add it to `.gitignore` before staging. Review the staged file list and diff for credentials, personal information, and absolute paths. Use a GitHub-provided `noreply` author email if you want to keep your email address private. Share screenshots made from the fictional workspace.
-
-
 ## License
 
-Released under the [MIT License](LICENSE).
+Copyright © 2026 Aleksanteri Kuosmanen. Released under the [MIT License](LICENSE).

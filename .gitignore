@@ -1,6 +1,6 @@
 /data/
 /personal_data/
-/.agents/mcp_config.json
+/.agents/
 /.streamlit/secrets.toml
 .env
 .env.*
